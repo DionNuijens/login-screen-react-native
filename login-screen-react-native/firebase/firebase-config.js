@@ -1,4 +1,9 @@
 // Import the functions you need from the SDKs you need
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/app';
+import 'firebase/compat/firestore';
+
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
@@ -13,8 +18,15 @@ const firebaseConfig = {
   appId: "1:468075464013:web:dec68200f7f1db1cc16304"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase Authentication and get a reference to the service
-export const authentication = getAuth(app);
+
+if (!firebase.app.length){
+  firebase.initializeApp(firebaseConfig)
+}
+export { firebase };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+
+// // Initialize Firebase Authentication and get a reference to the service
+// export const authentication = getAuth(app);
