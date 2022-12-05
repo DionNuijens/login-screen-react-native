@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { firebase } from '../firebase/firebase-config.js'
+import { firebase } from '../config'
 import { async } from '@firebase/util'
 import SignUpScreen from './SignUpScreen'
 

@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useState, useEffect} from "react";
-import { firebase } from "./firebase/firebase-config.js"
+import { firebase } from "./config.js"
 
 import LoginScreen from "./src/LoginScreen.js";
 import SignUpScreen from "./src/SignUpScreen.js";

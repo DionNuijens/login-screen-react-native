@@ -1,6 +1,7 @@
 Klarity App FirebaseAuth V9
 
 yarn install
+yarn add expo
 npm install firebase
 yarn add @react-navigation/native
 yarn add @react-native-async-storage/async-storage

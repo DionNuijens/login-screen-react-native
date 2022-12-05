@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useLinkProps } from '@react-navigation/native'
 
-const Header = () => {
+const Header = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.textname}>
