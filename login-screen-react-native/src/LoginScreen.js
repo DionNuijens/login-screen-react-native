@@ -52,8 +52,8 @@ const LoginScreen = () => {
             onPress={() => navigation.navigate('SignUpScreen')}
             style={styles.signUpButton}
         >
-          <Text style={styles.buttonText}>
-          SignUp
+          <Text style={styles.signUpText}>
+          Don't have an account? Sign up now!
           </Text>
         </TouchableOpacity>
     </View>
@@ -98,9 +98,9 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 50,
-    height: 70,
-    width: 250,
-    backgroundColor: '#026efd',
+    height: 50,
+    width: 200,
+    backgroundColor: '#28b4ee',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50,
@@ -110,8 +110,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   buttonText: {
-    fontWeight: 'bold',
+    fontWeight: 'regular',
     fontSize: 22,
+    color: '#fff',
   },  
+  signUpText: {
+    fontWeight: 'regular',
+    fontSize: 18,
+  },
 });
 

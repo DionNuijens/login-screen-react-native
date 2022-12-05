@@ -42,7 +42,7 @@ function App(){
               borderBottomRightRadius:50,
               backgroundColor: '#c228ee',
               shadowColor: '#000',
-              elevation: 25,
+              elevation: 15,
             }
           }}
         />

@@ -19,8 +19,9 @@ const styles = StyleSheet.create({
         marginLeft: 15,
     },
     textname: {
-        fontWeight:'bold',
+        fontWeight:'regular',
         fontSize: 28,
+        color: '#fff',
         
     },
 })
