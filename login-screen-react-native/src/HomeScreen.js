@@ -9,18 +9,18 @@ const HomeScreen = () => {
   const [userName, setUserName] = useState('')
   const {height} = useWindowDimensions()
 
-  useEffect(() => {
-    firebase.firestore().collection("users")
-    .doc(firebase.auth().currentUser.uid).get()
-    .then((snapshot) => {
-      if(snapshot.exists){
-        setUserName(snapshot.data())
-      }
-      else {
-        console.log('User does not exist')
-      }
-    })
-  }, [])
+  // useEffect(() => {
+  //   firebase.firestore().collection("users")
+  //   .doc(firebase.auth().currentUser.uid).get()
+  //   .then((snapshot) => {
+  //     if(snapshot.exists){
+  //       setUserName(snapshot.data())
+  //     }
+  //     else {
+  //       console.log('User does not exist')
+  //     }
+  //   })
+  // }, [])
 
   return (
       <View style={styles.container}
