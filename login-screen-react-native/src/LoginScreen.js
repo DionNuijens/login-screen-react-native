@@ -174,4 +174,3 @@ const styles = StyleSheet.create({
     color: '#DF28E9',
   },
 });
-
