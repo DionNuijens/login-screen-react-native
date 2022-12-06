@@ -24,6 +24,15 @@ const LoginScreen = () => {
     }
   }
 
+const forgotPassword = () => {
+  firebase.auth().sendPasswordResetEmail(email)
+  .then(() => {
+    alert("Password reset email has been sent")
+  }).catch((error) => {
+    alert(error)
+  })
+}
+  
   return (
     <View style={styles.container}
     behavior = "padding"
@@ -51,6 +60,17 @@ const LoginScreen = () => {
               style = {styles.input}
             />
         </View>
+        
+        <TouchableOpacity
+            onPress={() => forgotPassword()}
+            style={styles.forgotPasswordButton}
+        >
+        
+          <Text style={styles.noAccountText}>
+          Forgot {''}<Text style={styles.forgotPasswordText}>password?</Text>
+          </Text>
+        </TouchableOpacity>
+
 
         <TouchableOpacity
             onPress={() => loginUser(email, password)}
@@ -80,7 +100,7 @@ export default LoginScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#df28e9',
+    backgroundColor: '#DF28E9',
   },
   rectangleOverlay: {
     flex: 2,
@@ -117,8 +137,17 @@ const styles = StyleSheet.create({
     borderRadius: 75,
     marginTop: 15,
   },
+  forgotPasswordButton: {
+    marginLeft: '50%',
+    marginTop: 10,
+  },
+  forgotPasswordText: {
+    fontWeight: 'regular',
+    fontSize: 16,
+    color: '#DF28E9',
+  },
   button: {
-    marginTop: "47%",
+    marginTop: "40%",
     height: 50,
     width: 200,
     backgroundColor: '#28b4ee',
@@ -142,7 +171,7 @@ const styles = StyleSheet.create({
   signUpText: {
     fontWeight: 'bold',
     fontSize: 16,
-    color: '#df28e9',
+    color: '#DF28E9',
   },
 });
 
