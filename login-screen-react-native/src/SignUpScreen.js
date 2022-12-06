@@ -19,26 +19,12 @@ const SignUpScreen = () => {
   const registerUser = async (userName, email, password) => {
     await firebase.auth().createUserWithEmailAndPassword(userName, email, password)
     .then(() => {
-      firebase.auth().currentUser.sendEmailVerification({
-        handleCodeInApp: true,
-        url: "fir-auth-a1145.firebaseapp.com",
-      })
-      .then(() => {
-        alert('Verification email has been sent!')
-      }).catch((error) => {
-        alert(error.message)
-      })
-      .then(() => {
         firebase.firestore().collection('users')
         .doc(firebase.auth().currentUser.uid)
         .set({
           userName,
           email,
         })
-      })
-      .catch((error) => {
-        alert(error.message)
-      })
     })
       .catch((error) => {
         alert(error.message)
