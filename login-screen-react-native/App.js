@@ -7,8 +7,7 @@ import LoginScreen from "./src/LoginScreen.js";
 import SignUpScreen from "./src/SignUpScreen.js";
 import HomeScreen from "./src/HomeScreen.js";
 // import Header from "./components/Header.js";
-import { NativeAppEventEmitter } from "react-native";
-import { applyActionCode } from "firebase/auth";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -22,8 +21,8 @@ function App(){
     if(initializing) setInitializing(false);
   }
   useEffect(() =>  {
-    const user = firebase.auth().onAuthStateChanged(onAuthStateChanged);
-    return user;
+    const client = firebase.auth().onAuthStateChanged(onAuthStateChanged);
+    return client;
   }, []);
 
   if (initializing) return null;
@@ -34,34 +33,16 @@ function App(){
         <Stack.Screen
           name = 'Login' 
           component={LoginScreen}
-          options={{ headerShown: false}}
-          // options = {{
-          //   headerTitle: () => <Header name = "Klarity"/>,
-          //   headerStyle: {
-          //     height: 150,
-          //     borderBottomLeftRadius:50,
-          //     borderBottomRightRadius:50,
-          //     backgroundColor: '#c228ee',
-          //     shadowColor: '#000',
-          //     elevation: 15,
-          //   }
-          // }}
+          options={{ 
+            headerShown: false
+            }}
         />
         <Stack.Screen
-          name = 'Sign Up' 
+          name = 'SignUp' 
           component={SignUpScreen}
-          options={{ headerShown: false}}
-          // options = {{
-          //   headerTitle: () => <Header name = "Klarity"/>,
-          //   headerStyle: {
-          //     height: 150,
-          //     borderBottomLeftRadius:50,
-          //     borderBottomRightRadius:50,
-          //     backgroundColor: '#c228ee',
-          //     shadowColor: '#000',
-          //     elevation: 25,
-          //   }
-          // }}
+          options={{ 
+            headerShown: false
+            }}
         />
       </Stack.Navigator>
     );
@@ -72,18 +53,9 @@ function App(){
       <Stack.Screen
           name = 'Home' 
           component={HomeScreen}
-          options={{ headerShown: false}}
-          // options = {{
-          //   headerTitle: () => <Header name = "Home"/>,
-          //   headerStyle: {
-          //     height: 150,
-          //     borderBottomLeftRadius:50,
-          //     borderBottomRightRadius:50,
-          //     backgroundColor: '#c228ee',
-          //     shadowColor: '#000',
-          //     elevation: 25,
-          //   }
-          // }}
+          options={{ 
+            headerShown: false
+            }}
         />
     </Stack.Navigator>
   );
