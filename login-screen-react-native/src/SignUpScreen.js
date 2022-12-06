@@ -19,7 +19,7 @@ const SignUpScreen = () => {
   const registerUser = async (userName, email, password) => {
     await firebase.auth().createUserWithEmailAndPassword(userName, email, password)
     .then(() => {
-        firebase.firestore().collection('users')
+        firebase.firestore().collection("users")
         .doc(firebase.auth().currentUser.uid)
         .set({
           userName,
