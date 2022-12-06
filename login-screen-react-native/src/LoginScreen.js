@@ -24,7 +24,7 @@ const LoginScreen = () => {
   }
 
   return (
-    <KeyboardAvoidingView style={styles.container}
+    <View style={styles.container}
     behavior = "padding"
     >
     <View style={styles.rectangleOverlay} >
@@ -68,7 +68,7 @@ const LoginScreen = () => {
           </Text>
         </TouchableOpacity>
         </View>
-    </KeyboardAvoidingView>
+    </View>
   )
 }
 
@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
     marginTop: '20%',
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
-    borderRadius: '20%',
+    borderTopRightRadius: '20%',
+    borderTopLeftRadius: '20%',
     backgroundColor: '#f4f4f4',
     alignItems: 'center',
   },
