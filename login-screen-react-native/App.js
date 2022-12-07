@@ -2,14 +2,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useState, useEffect} from "react";
 import { firebase } from "./config.js"
+import { Tabs } from "./components/Tabs.js";
 
 import LoginScreen from "./src/LoginScreen.js";
 import SignUpScreen from "./src/SignUpScreen.js";
 import HomeScreen from "./src/HomeScreen.js";
+
 // import Header from "./components/Header.js";
 
 
 const Stack = createNativeStackNavigator();
+
 
 function App(){
   const [initializing, setInitializing] = useState(true);
@@ -60,6 +63,7 @@ function App(){
     </Stack.Navigator>
   );
 }
+
 
 export default () => {
   return (

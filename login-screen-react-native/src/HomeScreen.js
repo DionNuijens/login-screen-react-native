@@ -2,25 +2,17 @@ import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindo
 import React, { useState, useEffect } from 'react'
 import spongebob from '../assets/spongebob.jpg'
 import { firebase } from '../config'
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+
+import ProfileScreen from "./appScreens/ProfileScreen.js"
+import SettingsScreen from "./appScreens/SettingsScreen.js"
 
 
 const HomeScreen = () => {
 
-  const [userName, setUserName] = useState('')
   const {height} = useWindowDimensions()
-
-  // useEffect(() => {
-  //   firebase.firestore().collection("users")
-  //   .doc(firebase.auth().currentUser.uid).get()
-  //   .then((snapshot) => {
-  //     if(snapshot.exists){
-  //       setUserName(snapshot.data())
-  //     }
-  //     else {
-  //       console.log('User does not exist')
-  //     }
-  //   })
-  // }, [])
+  const Tab = createBottomTabNavigator();
 
   return (
       <View style={styles.container}
@@ -37,6 +29,10 @@ const HomeScreen = () => {
               Sign Out
             </Text>
           </TouchableOpacity>
+          <Tab.Navigator>
+            <Tab.Screen name="Profile" component={ ProfileScreen } />
+            <Tab.Screen name="Settings" component={ SettingsScreen } />
+          </Tab.Navigator>
         </View>
       </View>
   )
