@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import React, { useState, useEffect} from "react";
 import { firebase } from "./config.js"
 import { Tabs } from "./components/Tabs.js";
@@ -8,10 +9,15 @@ import LoginScreen from "./src/LoginScreen.js";
 import SignUpScreen from "./src/SignUpScreen.js";
 import HomeScreen from "./src/HomeScreen.js";
 
+import ProfileScreen from "./src/appScreens/ProfileScreen.js"
+import SettingsScreen from "./src/appScreens/SettingsScreen.js"
+import { View } from "react-native";
+
 // import Header from "./components/Header.js";
 
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 
 function App(){
@@ -60,6 +66,7 @@ function App(){
             headerShown: false
             }}
         />
+      <Tabs />
     </Stack.Navigator>
   );
 }
@@ -67,7 +74,8 @@ function App(){
 
 export default () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer
+    independent={true}>
       <App />
     </NavigationContainer>
   )

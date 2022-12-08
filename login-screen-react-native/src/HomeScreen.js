@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions  } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions,  } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import spongebob from '../assets/spongebob.jpg'
 import { firebase } from '../config'
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 import ProfileScreen from "./appScreens/ProfileScreen.js"
 import SettingsScreen from "./appScreens/SettingsScreen.js"
@@ -29,10 +31,6 @@ const HomeScreen = () => {
               Sign Out
             </Text>
           </TouchableOpacity>
-          <Tab.Navigator>
-            <Tab.Screen name="Profile" component={ ProfileScreen } />
-            <Tab.Screen name="Settings" component={ SettingsScreen } />
-          </Tab.Navigator>
         </View>
       </View>
   )
