@@ -26,6 +26,9 @@ const HomeScreen = () => {
   const openModal = () => {
     bottomSheetModalRef.current.present();
   }
+  const closeBottomSheet = () => {
+    bottomSheetModalRef.current.close();
+  }
   
   // retrive data from MySQL database with JSON
   const [scanresult, setScanresult] = useState([]);
@@ -72,6 +75,14 @@ const HomeScreen = () => {
           >
             <ScrollView>
               <View style={styles.contentContainer}>
+              <TouchableOpacity
+              onPress = {closeBottomSheet}>
+                <Text 
+                style={styles.closeText}
+                >
+                  Close
+                </Text>
+              </TouchableOpacity>
                 <View>
                     {scanresult.map(dataScan => (
                       <Text key={dataScan.resultid}>                         {dataScan.time}     -      {dataScan.result}</Text>
@@ -141,6 +152,12 @@ const styles = StyleSheet.create({
     fontWeight: 'regular',
     fontSize: 22,
     color: '#fff',
+  },
+  closeText:{
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: '#DF28E9',
+    marginLeft: "5%",
   },  
   bottomSheetModalStyle: {
     alignContent: "center",
