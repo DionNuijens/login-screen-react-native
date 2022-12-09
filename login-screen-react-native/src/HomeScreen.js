@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions,  } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions,   } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import spongebob from '../assets/spongebob.jpg'
 import { firebase } from '../config'
@@ -9,14 +9,22 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import ProfileScreen from "./appScreens/ProfileScreen.js"
 import SettingsScreen from "./appScreens/SettingsScreen.js"
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 const HomeScreen = () => {
-
+  const [scanresult, setScanresult] = useState([]);
   const {height} = useWindowDimensions()
   const Tab = createBottomTabNavigator();
 
+
+  fetch("http://192.168.236.132/reactnativefetch.php")
+  .then(response => response.json())
+  .then(json => setScanresult(json))
+  .catch(error => console.error(error));
+
   return (
+    <ScrollView>
       <View style={styles.container}
       behavior = "padding"
       >
@@ -24,6 +32,13 @@ const HomeScreen = () => {
           <Image source={spongebob} 
                   style={[styles.spongebob, {height: height * 0.3}]} 
                   resizeMode="contain"/>
+
+            <View>
+              {scanresult.map(dataScan => (
+                <Text key={dataScan.resultid}>{dataScan.deviceid} {dataScan.result} {dataScan.time}</Text>
+              ))}
+            </View>
+          
           <TouchableOpacity 
           onPress={() => {firebase.auth().signOut()}}
           style={styles.signoutButton}>
@@ -33,6 +48,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+      </ScrollView>
   )
 }
 

@@ -66,7 +66,6 @@ function App(){
             headerShown: false
             }}
         />
-      <Tabs />
     </Stack.Navigator>
   );
 }
