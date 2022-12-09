@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions,   } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions, onPress  } from 'react-native'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import spongebob from '../assets/spongebob.jpg'
+import Logo from '../assets/temporaryLogoApp.png'
+
 import { firebase } from '../config'
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { BottomSheetModal, BottomSheetModalProvider, } from '@gorhom/bottom-sheet';
 
 
 import ProfileScreen from "./appScreens/ProfileScreen.js"
@@ -13,31 +15,71 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 const HomeScreen = () => {
-  const [scanresult, setScanresult] = useState([]);
   const {height} = useWindowDimensions()
+
+  // Tab navigation
   const Tab = createBottomTabNavigator();
+  
+  // Bottomsheet variables
+  const bottomSheetModalRef = useRef(null);
+  const snapPoints = useMemo(() => ['65%'], []);
+  const openModal = () => {
+    bottomSheetModalRef.current.present();
+  }
+  
+  // retrive data from MySQL database with JSON
+  const [scanresult, setScanresult] = useState([]);
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch("http://192.168.236.132/reactnativefetch.php");
+      const json = await response.json();
+      setScanresult(json);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-  fetch("http://192.168.236.132/reactnativefetch.php")
-  .then(response => response.json())
-  .then(json => setScanresult(json))
-  .catch(error => console.error(error));
 
   return (
-    <ScrollView>
+  <BottomSheetModalProvider>
       <View style={styles.container}
       behavior = "padding"
       >
         <View style={styles.rectangleOverlay}>
-          <Image source={spongebob} 
+        
+          <Image source={Logo} 
                   style={[styles.spongebob, {height: height * 0.3}]} 
-                  resizeMode="contain"/>
+                  resizeMode="contain"
+                  />
 
-            <View>
-              {scanresult.map(dataScan => (
-                <Text key={dataScan.resultid}>{dataScan.deviceid} {dataScan.result} {dataScan.time}</Text>
-              ))}
-            </View>
+          <TouchableOpacity
+            onPress={() => openModal()}
+            style={styles.DataSheetButton}>
+                <Text style={styles.signoutText}>
+                  DataSheet
+                </Text>
+          </TouchableOpacity>
+
+          <BottomSheetModal
+            ref={bottomSheetModalRef}
+            index={0}
+            snapPoints={snapPoints}
+            style={styles.bottomSheetModalStyle}
+          >
+            <ScrollView>
+              <View style={styles.contentContainer}>
+                <View>
+                    {scanresult.map(dataScan => (
+                      <Text key={dataScan.resultid}>                         {dataScan.time}     -      {dataScan.result}</Text>
+                    ))}
+                </View>
+              </View>
+            </ScrollView>
+          </BottomSheetModal>
           
           <TouchableOpacity 
           onPress={() => {firebase.auth().signOut()}}
@@ -48,7 +90,9 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-      </ScrollView>
+    
+    
+  </BottomSheetModalProvider>
   )
 }
 
@@ -84,10 +128,33 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 50,
   },
+  DataSheetButton: {
+    marginTop: "10%",
+    height: 50,
+    width: 200,
+    backgroundColor: '#28b4ee',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+  },
   signoutText: {
     fontWeight: 'regular',
     fontSize: 22,
     color: '#fff',
   },  
+  bottomSheetModalStyle: {
+    alignContent: "center",
+    justifyContent: "center",
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: -4,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    
+  },
   
 })
