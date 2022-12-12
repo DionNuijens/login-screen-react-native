@@ -24,6 +24,12 @@ yarn add @react-navigation/stack
 
 yarn add @react-navigation/bottom-tabs
 
+yarn add @gorhom/bottom-sheet@^4
+
+yarn add react-native-reanimated react-native-gesture-handler
+
+expo install react-native-reanimated react-native-gesture-handler
+
 expo start
 
 
