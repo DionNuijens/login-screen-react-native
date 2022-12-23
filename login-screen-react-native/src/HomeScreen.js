@@ -9,8 +9,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { BottomSheetModal, BottomSheetModalProvider, } from '@gorhom/bottom-sheet';
 
 
-import ProfileScreen from "./appScreens/ProfileScreen.js"
-import SettingsScreen from "./appScreens/SettingsScreen.js"
+import Chart from "./appScreens/Chart.js"
 import { ScrollView } from 'react-native-gesture-handler';
 
 
@@ -22,7 +21,7 @@ const HomeScreen = () => {
   
   // Bottomsheet variables
   const bottomSheetModalRef = useRef(null);
-  const snapPoints = useMemo(() => ['65%'], []);
+  const snapPoints = useMemo(() => ['90%'], []);
   const openModal = () => {
     bottomSheetModalRef.current.present();
   }
@@ -62,9 +61,17 @@ const HomeScreen = () => {
           <TouchableOpacity
             onPress={() => openModal()}
             style={styles.DataSheetButton}>
-                <Text style={styles.signoutText}>
-                  DataSheet
-                </Text>
+              <Text style={styles.signoutText}>
+                DataSheet
+              </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            onPress={() => {firebase.auth().signOut()}}
+            style={styles.signoutButton}>
+              <Text style={styles.signoutText}>
+                Sign Out
+              </Text>
           </TouchableOpacity>
 
           <BottomSheetModal
@@ -84,21 +91,15 @@ const HomeScreen = () => {
                 </Text>
               </TouchableOpacity>
                 <View>
-                    {scanresult.map(dataScan => (
+                  <Chart/>
+                    {/* {scanresult.map(dataScan => (
                       <Text key={dataScan.resultid}>                         {dataScan.time}     -      {dataScan.result}</Text>
-                    ))}
+                    ))} */}
                 </View>
               </View>
             </ScrollView>
           </BottomSheetModal>
           
-          <TouchableOpacity 
-          onPress={() => {firebase.auth().signOut()}}
-          style={styles.signoutButton}>
-            <Text style={styles.signoutText}>
-              Sign Out
-            </Text>
-          </TouchableOpacity>
         </View>
       </View>
     

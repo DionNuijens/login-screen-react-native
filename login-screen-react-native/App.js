@@ -9,7 +9,7 @@ import LoginScreen from "./src/LoginScreen.js";
 import SignUpScreen from "./src/SignUpScreen.js";
 import HomeScreen from "./src/HomeScreen.js";
 
-import ProfileScreen from "./src/appScreens/ProfileScreen.js"
+import Chart from "./src/appScreens/Chart.js"
 import SettingsScreen from "./src/appScreens/SettingsScreen.js"
 import { View } from "react-native";
 

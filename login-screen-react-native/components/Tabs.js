@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 
 const Tab = createBottomTabNavigator();
 import HomeScreen from "../src/HomeScreen.js"
-import ProfileScreen from "../src/appScreens/ProfileScreen.js"
+import Chart from "../src/appScreens/Chart.js"
 import SettingsScreen from "../src/appScreens/SettingsScreen.js"
 import { NavigationContainer } from '@react-navigation/native';
 
