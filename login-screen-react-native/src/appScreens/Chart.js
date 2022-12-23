@@ -77,7 +77,7 @@ const HideKeyboard = ({ children }) => (
           style={styles.chart}
           data={data}
           width={Dimensions.get('window').width - 20} // from react-native
-          height={Dimensions.get('window').height - 400}
+          height={Dimensions.get('window').height - 600}
           bezier
           xLabelsOffset={100}
           segments={3}

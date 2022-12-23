@@ -21,7 +21,7 @@ const HomeScreen = () => {
   
   // Bottomsheet variables
   const bottomSheetModalRef = useRef(null);
-  const snapPoints = useMemo(() => ['90%'], []);
+  const snapPoints = useMemo(() => ['70%'], []);
   const openModal = () => {
     bottomSheetModalRef.current.present();
   }
