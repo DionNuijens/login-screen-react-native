@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions, onPress  } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions, onPress, Slider  } from 'react-native'
 import React, { useState, useEffect, useRef, useMemo } from 'react'
 import spongebob from '../assets/spongebob.jpg'
 import Logo from '../assets/temporaryLogoApp.png'
@@ -10,6 +10,7 @@ import { BottomSheetModal, BottomSheetModalProvider, } from '@gorhom/bottom-shee
 
 
 import Chart from "./appScreens/Chart.js"
+import SliderScreen from "./appScreens/SliderScreen.js"
 import { ScrollView } from 'react-native-gesture-handler';
 
 
@@ -73,6 +74,9 @@ const HomeScreen = () => {
                 Sign Out
               </Text>
           </TouchableOpacity>
+          <View>
+            <SliderScreen/>
+          </View>
 
           <BottomSheetModal
             ref={bottomSheetModalRef}

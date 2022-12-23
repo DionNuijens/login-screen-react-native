@@ -2,9 +2,6 @@ import React, { useState, useEffect} from "react";
 import {AppRegistry, StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions, onPress, TextInput, Animated} from 'react-native';
 import { useNavigation, getStateFromPath } from '@react-navigation/native';
 import Slider from '@react-native-community/slider'
-import { firebase } from '../config'
-import Logo from '../assets/temporaryLogoApp.png'
-import MultiSlider from '@ptomasroos/react-native-multi-slider'
 // import LinearGradient from 'react-native-linear-gradient';
 // import {Slider} from '@miblanchard/react-native-slider'; 
 import { LinearGradient } from 'expo-linear-gradient';
@@ -106,7 +103,7 @@ import { LinearGradient } from 'expo-linear-gradient';
     maximumValue={100}
     value={50}
     // onValueChange={(value) => console.log(value)}
-    thumbImage={require('../assets/dot.png')}
+    thumbImage={require('../assets/icon.png')}
     minimumTrackTintColor={'rgba(0,0,0,0.0)'}
     maximumTrackTintColor={'rgba(0,0,0,0.0)'}
     thumbTintColor={''}
