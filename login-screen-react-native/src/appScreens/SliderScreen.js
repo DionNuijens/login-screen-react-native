@@ -103,7 +103,7 @@ import { LinearGradient } from 'expo-linear-gradient';
     maximumValue={100}
     value={50}
     // onValueChange={(value) => console.log(value)}
-    thumbImage={require('../assets/icon.png')}
+    thumbImage={require('../../assets/icon.png')}
     minimumTrackTintColor={'rgba(0,0,0,0.0)'}
     maximumTrackTintColor={'rgba(0,0,0,0.0)'}
     thumbTintColor={''}
