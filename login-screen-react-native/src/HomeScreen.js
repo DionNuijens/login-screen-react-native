@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions, onPress  } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions, onPress, Slider  } from 'react-native'
 import React, { useState, useEffect, useRef, useMemo } from 'react'
 import spongebob from '../assets/spongebob.jpg'
 import Logo from '../assets/temporaryLogoApp.png'
@@ -9,8 +9,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { BottomSheetModal, BottomSheetModalProvider, } from '@gorhom/bottom-sheet';
 
 
-import ProfileScreen from "./appScreens/ProfileScreen.js"
-import SettingsScreen from "./appScreens/SettingsScreen.js"
+import Chart from "./appScreens/Chart.js"
+import SliderScreen from "./appScreens/SliderScreen.js"
 import { ScrollView } from 'react-native-gesture-handler';
 
 
@@ -22,7 +22,7 @@ const HomeScreen = () => {
   
   // Bottomsheet variables
   const bottomSheetModalRef = useRef(null);
-  const snapPoints = useMemo(() => ['65%'], []);
+  const snapPoints = useMemo(() => ['70%'], []);
   const openModal = () => {
     bottomSheetModalRef.current.present();
   }
@@ -62,10 +62,22 @@ const HomeScreen = () => {
           <TouchableOpacity
             onPress={() => openModal()}
             style={styles.DataSheetButton}>
-                <Text style={styles.signoutText}>
-                  DataSheet
-                </Text>
+              <Text style={styles.signoutText}>
+                DataSheet
+              </Text>
           </TouchableOpacity>
+
+
+          <TouchableOpacity 
+            onPress={() => {firebase.auth().signOut()}}
+            style={styles.signoutButton}>
+              <Text style={styles.signoutText}>
+                Sign Out
+              </Text>
+          </TouchableOpacity>
+          <View>
+            <SliderScreen/>
+          </View>
 
           <BottomSheetModal
             ref={bottomSheetModalRef}
@@ -84,21 +96,15 @@ const HomeScreen = () => {
                 </Text>
               </TouchableOpacity>
                 <View>
-                    {scanresult.map(dataScan => (
+                  <Chart/>
+                    {/* {scanresult.map(dataScan => (
                       <Text key={dataScan.resultid}>                         {dataScan.time}     -      {dataScan.result}</Text>
-                    ))}
+                    ))} */}
                 </View>
               </View>
             </ScrollView>
           </BottomSheetModal>
           
-          <TouchableOpacity 
-          onPress={() => {firebase.auth().signOut()}}
-          style={styles.signoutButton}>
-            <Text style={styles.signoutText}>
-              Sign Out
-            </Text>
-          </TouchableOpacity>
         </View>
       </View>
     
@@ -131,7 +137,7 @@ const styles = StyleSheet.create({
     marginVertical: '5%',
   },
   signoutButton: {
-    marginTop: "30%",
+    marginTop: "10%",
     height: 50,
     width: 200,
     backgroundColor: '#28b4ee',

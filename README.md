@@ -30,6 +30,9 @@ yarn add react-native-reanimated react-native-gesture-handler
 
 expo install react-native-reanimated react-native-gesture-handler
 
+
+npx expo install expo-screen-orientation //
+
 expo start
 
 
