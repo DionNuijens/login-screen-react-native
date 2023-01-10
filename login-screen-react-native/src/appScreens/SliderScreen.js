@@ -7,6 +7,21 @@ import { LinearGradient } from 'expo-linear-gradient';
 
     const [value, setValue] = useState(0);
 
+
+      useEffect(() => {
+    // Make a call to fetch data here
+    fetch("http://192.168.236.132/reactnativefetch.php")
+      .then(response => response.json())
+      .then(data => {
+        // Extract the most recent value from the JSON array
+        const mostRecentValue = data[data.length - 1].result;
+        setValue(mostRecentValue);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      }, []);
+    
     return(
         <View style={styles.container}>
 
@@ -23,7 +38,7 @@ import { LinearGradient } from 'expo-linear-gradient';
     style={{ width: Dimensions.get('window').width - 50, maxHeight: '2%' }}
     minimumValue={0}
     maximumValue={500}
-    value={0}
+    value={value}
     // onValueChange={(value) => console.log(value)}
     thumbImage={require('../../assets/dot.png')}
     minimumTrackTintColor={'rgba(0,0,0,0.0)'}
