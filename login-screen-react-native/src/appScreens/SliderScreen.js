@@ -1,14 +1,10 @@
 import React, { useState, useEffect} from "react";
-import {AppRegistry, StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions, onPress, TextInput, Animated} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, useWindowDimensions, onPress, TextInput, Animated, Dimensions} from 'react-native';
 import { useNavigation, getStateFromPath } from '@react-navigation/native';
 import Slider from '@react-native-community/slider'
 // import LinearGradient from 'react-native-linear-gradient';
 // import {Slider} from '@miblanchard/react-native-slider'; 
 import { LinearGradient } from 'expo-linear-gradient';
-
-
-
-
 
 // import ColorPicker, {
 //     Preview,
@@ -18,14 +14,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 //     SaturationSlider,
 //   } from 'reanimated-color-picker';
 
-
-  
   const SliderScreen = () => {
     
     // const [value, setValue] = useState(0);
     const [value, setValue] = useState(0);
 
-  
     // const [hue, setHue] = useState(0);
     // const backgroundColor = new Animated.Value(0);
   
@@ -33,8 +26,6 @@ import { LinearGradient } from 'expo-linear-gradient';
     //   backgroundColor.setValue(hue);
     // }, [hue]);
   
-  
-    
     // const [minValue, setMinValue] = useState(0);
     // const [maxValue, setMaxValue] = useState(100);
   
@@ -92,23 +83,22 @@ import { LinearGradient } from 'expo-linear-gradient';
         />
       </View> */}
 
-      <LinearGradient colors={['#ff0000', '#FFA200', '#FBFF00', '#00ff00']}
+      <LinearGradient colors={['#00ff00','#FBFF00','#FFA200','#ff0000']}
       start={{ x: 0, y: 0}}
       end={{  x: 1, y: 0 }}
       style= {{    borderRadius: 20,}}
       >
   <Slider
-    style={{ width: 300, height: 15 }}
+    style={{ width: Dimensions.get('window').width - 50, maxHeight: '2%' }}
     minimumValue={0}
-    maximumValue={100}
-    value={50}
+    maximumValue={500}
+    value={0}
     // onValueChange={(value) => console.log(value)}
-    thumbImage={require('../../assets/icon.png')}
+    thumbImage={require('../../assets/dot.png')}
     minimumTrackTintColor={'rgba(0,0,0,0.0)'}
     maximumTrackTintColor={'rgba(0,0,0,0.0)'}
     thumbTintColor={''}
     onValueChange={setValue}
-    
     
   />
 </LinearGradient>
@@ -142,8 +132,6 @@ export default SliderScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     width: '100%',
   },
   gradient: {

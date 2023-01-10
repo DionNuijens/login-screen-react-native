@@ -67,6 +67,7 @@ const HomeScreen = () => {
               </Text>
           </TouchableOpacity>
 
+
           <TouchableOpacity 
             onPress={() => {firebase.auth().signOut()}}
             style={styles.signoutButton}>
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
     marginVertical: '5%',
   },
   signoutButton: {
-    marginTop: "30%",
+    marginTop: "10%",
     height: 50,
     width: 200,
     backgroundColor: '#28b4ee',
